@@ -20,7 +20,7 @@ class Wine <Formula
     ENV.append "CXXFLAGS", "-D_DARWIN_NO_64_BIT_INODE"
     ENV.append "LDFLAGS", "#{build32} -framework CoreServices -lz -lGL -lGLU"
 
-    args = [ "--prefix=#{prefix}"]
+    args = ["--prefix=#{prefix}", "--x-include=/usr/X11/include/", "--x-lib=/usr/X11/lib/"]
     args << "--without-freetype" if MACOS_VERSION >= 10.6 and Hardware.is_64_bit?
     args << "--disable-win16" if MACOS_VERSION < 10.6
 
@@ -37,6 +37,10 @@ class Wine <Formula
 
     You may also want to get winetricks:
       brew install winetricks
+
+    If you plan to use 3D applications, like games, you will need:
+      to check "Emulate a virtual desktop" in winecfg (tab Graphics)
+      to set the following environment variable: DYLD_FALLBACK_LIBRARY_PATH=/usr/X11/lib
     EOS
   end
 end
