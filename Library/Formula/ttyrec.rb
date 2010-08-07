@@ -5,11 +5,9 @@ class Ttyrec <Formula
   homepage 'http://0xcc.net/ttyrec/'
   md5 ''
 
-# depends_on 'cmake'
-
   def install
+		system "mkdir #{prefix}/bin"
     system "make"
-		# TODO: fix
 		system "cp ttytime ttyplay ttyrec #{prefix}/bin"
   end
 end
