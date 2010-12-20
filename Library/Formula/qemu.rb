@@ -12,7 +12,8 @@ class Qemu <Formula
     system "./configure", "--prefix=#{prefix}",
                           "--disable-darwin-user",
                           "--enable-cocoa",
-                          "--disable-bsd-user"
+                          "--disable-bsd-user",
+                          "--disable-vnc-tls"
     system "make install"
   end
 end
